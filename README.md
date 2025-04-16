@@ -1,215 +1,111 @@
-# Nordic-Robot AI
+# Nordic-Robot AI Chatbot
 
-Created for VIP Mechatronics for Motivation
+A specialized AI assistant for generating code and providing guidance for Nordic platforms, developed as part of the VIP Project at Georgia Tech.
 
-## About
+![Nordic-Robot AI](https://example.com/nordic-robot-ai-screenshot.png)
 
-- **💬 AI-Powered Chat**: Chat with the Gemini AI model
-- **💻 Code Generation**: Generate code with proper syntax highlighting
-- **⚡ Real-time Responses**: Stream responses as they're generated
-- **📋 Copy Functionality**: Copy entire messages or individual code blocks
-- **📚 Knowledge Base**: Upload custom knowledge to provide context to the AI
-- **🌙 Dark/Light Mode**: Toggle between dark and light themes
-- **📱 Responsive Design**: Works on desktop and mobile devices
-- **🔍 Markdown Support**: Full markdown rendering in AI responses
+## Overview
+
+Nordic-Robot AI is a chatbot interface powered by Google's Gemini 2.0 Flash model, designed specifically to assist with code generation and technical guidance for Nordic microcontrollers and related platforms. This tool provides context-aware responses, code examples, and explanations tailored to embedded systems development.
+
+## Features
+
+- **AI-Powered Code Generation**: Generate code snippets for Nordic platforms with context-aware understanding
+- **Knowledge Base Integration**: Custom context provision for more accurate and relevant responses
+- **Code Syntax Highlighting**: Clear visualization of generated code with language-specific highlighting
+- **Multiple Chat Sessions**: Maintain separate conversations with different contexts
+- **Dark/Light Theme**: Toggle between interface themes for comfortable viewing
+- **Mobile Responsive**: Use the tool seamlessly across devices of different sizes
+
+## Technology Stack
+
+- **Frontend**: Next.js, React, Tailwind CSS with shadcn/ui components
+- **Backend**: Next.js API routes
+- **AI Model**: Google Gemini 2.0 Flash
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **Markdown & Code Parsing**: React-Markdown with custom code block handling
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or newer)
-- A [Google AI Studio](https://ai.google.dev/) account for Gemini API access
+- Node.js (v16 or newer)
+- A Google Gemini API key (obtain from [Google AI Studio](https://ai.google.dev/))
 
 ### Installation
 
 1. Clone the repository:
-   \`\`\`bash
-   git clone https://github.com/your-username/nordic-robot-ai.git
-   cd nordic-robot-ai
-   \`\`\`
+   ```bash
+   git clone https://github.com/your-org/NordicCodeGen_Chabot.git
+   cd NordicCodeGen_Chabot
+   ```
 
 2. Install dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-3. Create a `.env.local` file in the root directory:
-   \`\`\`
+3. Create a `.env.local` file in the root directory with your Gemini API key:
+   ```
    GEMINI_API_KEY=your_api_key_here
-   \`\`\`
+   ```
 
 4. Start the development server:
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Usage Guide
+## Using the Knowledge Base
 
-### Basic Chat
+The knowledge base feature allows you to provide additional context to the AI model, improving the relevance and accuracy of generated responses:
 
-- Type your question or request in the input box at the bottom
-- Press "Generate" or Enter to send your message
-- The AI will respond with text, markdown, or code
+1. Click the database icon in the interface
+2. Add technical documentation, code examples, or guidelines relevant to your project
+3. Upload text files (.txt, .md, .json, .csv) or paste content directly
+4. Save the knowledge base to apply it to future conversations
 
-### Code Generation
+## Key Insights and Challenges
 
-When asking for code, specify the language you want:
+- **Built using Gemini 2.0 Flash**: Leverages Google's advanced AI model for code generation and technical assistance.
 
-\`\`\`
-Write a Python function to calculate the Fibonacci sequence
-\`\`\`
+- **Knowledge Base Integration**: Keeps the AI focused on Nordic platforms, providing additional context for more accurate and relevant code output.
 
-The AI will respond with properly formatted and syntax-highlighted code.
+- **Customizable Context**: The knowledge base is easily updatable, allowing for quick iteration and adaptation as project needs evolve.
 
-### Using the Knowledge Base
+- **Challenges**: 
+  - Occasional hallucinations and coding errors might occur
+  - The model may sometimes generate plausible-sounding but incorrect information
+  - Complex code structures might require additional validation
 
-1. Click the "Knowledge Base" button in the sidebar
-2. Either:
-   - Type or paste information into the text area
-   - Upload a text file by clicking "Upload File"
-3. Click "Save Knowledge Base"
-4. The AI will now use this information when generating responses
+- **Prompt Quality**: The quality of output directly correlates with prompt clarity — precise and detailed prompts typically yield better results.
 
-### Managing Chats
+## Contributing
 
-- Create a new chat by clicking "New Chat"
-- View chat history in the sidebar
-- Delete a chat by hovering over it and clicking the trash icon
-
-## Project Structure
-
-\`\`\`
-nordic-robot-ai/
-├── app/                  # Next.js app directory
-│   ├── api/              # API routes
-│   │   └── chat/         # Chat API endpoint
-│   ├── globals.css       # Global styles
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Main chat interface
-├── components/           # React components
-│   ├── code-block.tsx    # Code block with syntax highlighting
-│   ├── knowledge-base.tsx# Knowledge base modal
-│   ├── message-content.tsx# Message content with markdown support
-│   ├── theme-toggle.tsx  # Dark/light mode toggle
-│   └── ui/               # UI components (from shadcn/ui)
-├── utils/                # Utility functions
-│   └── code-parser.ts    # Code block parser
-├── public/               # Static assets
-└── ...                   # Config files
-\`\`\`
-
-## Core Components
-
-### ChatbotInterface (app/page.tsx)
-
-The main component that manages:
-- Chat state and history
-- Message sending and receiving
-- UI layout and responsiveness
-
-### MessageContent (components/message-content.tsx)
-
-Renders AI messages with:
-- Markdown formatting
-- Code block detection and highlighting
-- Copy functionality
-
-### CodeBlock (components/code-block.tsx)
-
-Displays code with:
-- Language-specific syntax highlighting
-- Language indicator
-- Copy button
-
-### KnowledgeBase (components/knowledge-base.tsx)
-
-Modal for:
-- Adding custom knowledge for context
-- File uploading
-- Knowledge management
-
-## API
-
-The application uses a Next.js API route to communicate with the Gemini API:
-
-### POST /api/chat
-
-**Request Body:**
-\`\`\`json
-{
-  "message": "User message here",
-  "chatId": "unique-chat-id",
-  "knowledgeBase": "Optional knowledge base content"
-}
-\`\`\`
-
-**Response:**
-\`\`\`json
-{
-  "response": "AI response text with markdown formatting"
-}
-\`\`\`
-
-## Environment Variables
-
-Create a `.env.local` file with the following variables:
-
-\`\`\`
-GEMINI_API_KEY=your_gemini_api_key
-\`\`\`
-
-## Security Considerations
-
-- The Gemini API key is stored in a `.env.local` file which is not committed to version control
-- API requests are made server-side to prevent exposing your API key to clients
-- The application includes basic safety settings for the Gemini API
-
-## Development
-
-### Adding New Features
+Contributions to the Nordic-Robot AI Chatbot are welcome! Please feel free to submit pull requests, create issues, or suggest enhancements.
 
 1. Fork the repository
-2. Create a feature branch
-3. Implement your changes
-4. Submit a pull request
-
-### Modifying the Theme
-
-The application uses Tailwind CSS for styling. You can customize the theme in:
-
-- `app/globals.css` - Color variables
-- `tailwind.config.ts` - Theme configuration
-
-## Troubleshooting
-
-### API Key Issues
-
-If you see "API key not found" errors:
-- Ensure your `.env.local` file exists in the root directory
-- Verify the `GEMINI_API_KEY` variable is set correctly
-- Restart the development server after adding the key
-
-### Blank Responses
-
-If the AI returns blank responses:
-- Check your API key permissions in Google AI Studio
-- Ensure you have access to the Gemini models
-- Verify your account has available quota
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
+## Acknowledgements
 
-- [Next.js](https://nextjs.org/) - React framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [Google Gemini](https://ai.google.dev/) - AI model
-
----
-
-Made with ❤️ by Your Name
-\`\`\`
+- Georgia Tech VIP Program
+- Google Gemini AI Platform
+- Nordic Semiconductor
+- Contributors to the shadcn/ui component library
