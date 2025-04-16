@@ -2,8 +2,6 @@
 
 A specialized AI assistant for generating code and providing guidance for Nordic platforms, developed as part of the VIP Project at Georgia Tech.
 
-![Nordic-Robot AI](https://example.com/nordic-robot-ai-screenshot.png)
-
 ## Overview
 
 Nordic-Robot AI is a chatbot interface powered by Google's Gemini 2.0 Flash model, designed specifically to assist with code generation and technical guidance for Nordic microcontrollers and related platforms. This tool provides context-aware responses, code examples, and explanations tailored to embedded systems development.
